@@ -18,7 +18,7 @@ const Header = () => {
                     <li className=''>ABOUT</li>
                     <li className=''>SKILLS</li>
                     <li className=''>PROJECTS</li>
-                    <Link to={'/login'} className=''><button className='border font-thin rounded-full px-3 bg-slate-700 text-white'>
+                    <Link to={'/login'} className=''><button className='border font-thin rounded-lg px-3 py-2.5 bg-slate-700 text-white'>
                         ACCOUNT</button></Link>
                 </ul>
 

@@ -1,10 +1,14 @@
 const express = require('express');
-const app = express();
 const cors = require('cors');
-const { default: mongoose } = require('mongoose');
+const mongoose = require('mongoose');
+const { UserRegister } = require('./controllers/UserController');
 require('dotenv').config()
 
-//Yz2opU8FNFTr4pYf
+//xDmFk9jgrJfJv9p9
+
+const app = express();
+
+
 
 app.use(express.json())
 
@@ -12,15 +16,14 @@ app.use(cors({
     credentials: true,
     origin: 'http://localhost:5173'
 }))
-console.log(process.env.MONGO_URL)
-mongoose.connect(process.env.MONGO_URL)
+
+mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+})
+
+app.post('/signUp', UserRegister);
 
 
-app.post('/signUp', (req, res) => {
-    const { name, email, password } = req.body;
-    res.json({ name, email, password });
+app.listen(7001, () => {
+    console.log("app running on localhost:7001")
 });
-
-
-app.listen(4001);
-console.log("app running on localhost:4001")

@@ -8,7 +8,7 @@ const LoginPage = () => {
                 <form className="max-w-md mx-auto ">
                     <input type="email" placeholder="yourmail@mail.com" />
                     <input type="password" placeholder="Password" />
-                    <button className="w-full p-2">Login</button>
+                    <button className="w-full p-2 mt-4">Login</button>
                     <div className="py-2 text-center text-gray-500 font-nunito">
                         Not a memeber yet ?
                         <Link className="underline text-black font-semibold" to={'/signUp'}> Sign Up </Link>

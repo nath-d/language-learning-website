@@ -8,13 +8,15 @@ const SignUpPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    function registerUser(event) {
+    async function registerUser(event) {
         event.preventDefault();
-        axios.post('/signUp', {
+        await axios.post('/signUp', {
             name,
             email,
             password
-        })
+        });
+
+
     }
 
     return (
@@ -34,7 +36,7 @@ const SignUpPage = () => {
                         placeholder="Password"
                         value={password}
                         onChange={event => setPassword(event.target.value)} />
-                    <button className="w-full p-2">Sign Up</button>
+                    <button className="w-full p-2 mt-4">Sign Up</button>
                     <div className="py-2 text-center text-gray-500 font-nunito">
                         Already a member?
                         <Link className="underline text-black font-semibold" to={'/login'}> Login </Link>
