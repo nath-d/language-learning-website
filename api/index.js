@@ -1,8 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const { UserRegister, UserLogin } = require('./controllers/UserController');
+const { UserRegister, UserLogin, TokenHandler } = require('./controllers/UserController');
 require('dotenv').config()
+const cookieParser = require('cookie-parser');
+const { JsonWebTokenError } = require('jsonwebtoken');
 
 //xDmFk9jgrJfJv9p9
 
@@ -11,6 +13,8 @@ const app = express();
 
 
 app.use(express.json())
+app.use(cookieParser())
+
 
 app.use(cors({
     credentials: true,
@@ -23,6 +27,8 @@ mongoose.connect(process.env.MONGO_URL, {
 
 app.post('/signUp', UserRegister);
 app.post('/login', UserLogin)
+
+app.get('/profile', TokenHandler)
 
 
 app.listen(7001, () => {

@@ -28,12 +28,16 @@ const UserLogin = async (req, res) => {
     if (user) {
         const passOk = bcrypt.compareSync(password, user.password)
         if (passOk) {
-            jwt.sign({ email: user.email, id: user._id },
+            jwt.sign({
+                email: user.email,
+                id: user._id,
+                name: user.name
+            },
                 jwtSecret,
                 {},
                 (err, token) => {
                     if (err) throw err;
-                    res.cookie('token', token).json('pass ok')
+                    res.cookie('token', token).json(user)
                 })
 
         } else {
@@ -43,5 +47,17 @@ const UserLogin = async (req, res) => {
         res.json('not found')
     }
 }
+const TokenHandler = (req, res) => {
+    const { token } = req.cookies;
+    if (token) {
+        jwt.verify(token, jwtSecret, {}, (err, user) => {
+            if (err) throw err;
+            res.json(user)
+        })
+    } else {
 
-module.exports = { UserRegister, UserLogin }
+    }
+    res.json(null)
+}
+
+module.exports = { UserRegister, UserLogin, TokenHandler }
