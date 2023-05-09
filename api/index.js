@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const { UserRegister } = require('./controllers/UserController');
+const { UserRegister, UserLogin } = require('./controllers/UserController');
 require('dotenv').config()
 
 //xDmFk9jgrJfJv9p9
@@ -22,6 +22,7 @@ mongoose.connect(process.env.MONGO_URL, {
 })
 
 app.post('/signUp', UserRegister);
+app.post('/login', UserLogin)
 
 
 app.listen(7001, () => {

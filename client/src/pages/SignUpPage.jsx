@@ -10,14 +10,20 @@ const SignUpPage = () => {
 
     async function registerUser(event) {
         event.preventDefault();
-        await axios.post('/signUp', {
-            name,
-            email,
-            password
-        });
-
-
+        try {
+            await axios.post('/signUp',
+                {
+                    name,
+                    email,
+                    password
+                });
+            alert('Registration Successful')
+        } catch (e) {
+            alert('Registration failed')
+        }
     }
+
+
 
     return (
         <div className="mt-4 grow flex items-center justify-around min-h-screen">
