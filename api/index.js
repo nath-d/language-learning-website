@@ -27,6 +27,7 @@ mongoose.connect(process.env.MONGO_URL, {
 
 app.post('/signUp', UserRegister);
 app.post('/login', UserLogin)
+
 app.post('/logout', (req, res) => {
     res.cookie('token', '').json(true);
 })

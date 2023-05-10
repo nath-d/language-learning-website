@@ -28,8 +28,6 @@ const Header = () => {
                     {!user ? (<Link to={'/login'} className=''><button className='border font-thin rounded-lg px-3 py-2.5 bg-slate-700 text-white'>
                         SIGN IN</button></Link>) : (<Link to={'/'} className=''><button onClick={logout} className='border font-thin rounded-lg px-3 py-2.5 bg-slate-700 text-white'>
                             LOGOUT</button></Link>)}
-                    {/* <Link to={'/login'} className=''><button className='border font-thin rounded-lg px-3 py-2.5 bg-slate-700 text-white'>
-                        SIGN IN</button></Link> */}
                 </ul>
 
 

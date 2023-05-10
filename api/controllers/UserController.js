@@ -40,11 +40,11 @@ const UserLogin = async (req, res) => {
                 {},
                 (err, token) => {
                     if (err) throw err;
-                    res.cookie('token', token).json(user)
+                    res.cookie('token', token).send({ msg: "success", result: user })
                 })
 
         } else {
-            res.status(422).json('pass not ok')
+            res.status(201).send({ msg: "passWrong" })
         }
     } else {
         res.json('not found')

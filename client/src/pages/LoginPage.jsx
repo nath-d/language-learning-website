@@ -17,9 +17,17 @@ const LoginPage = () => {
                     email,
                     password
                 });
-            setUser(data)
-            alert('Login Successful');
-            setRedirect(true)
+            console.log(data)
+            if (data.msg === "success") {
+                setUser(data.result)
+                alert('Login Successful');
+                setRedirect(true)
+
+            } else if (data.msg === "passWrong") {
+                alert('Wrong Password')
+            } else {
+                alert("Login Unsuccessful")
+            }
 
         } catch (e) {
             alert('Login Unsuccessful')
