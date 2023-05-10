@@ -8,7 +8,6 @@ const Header = () => {
     const [nav, setNav] = useState(false)
     const handleClick = () => setNav(!nav)
     const { user, setUser } = useContext(UserContext)
-    // const [toHome, setToHome] = useState(null)
 
     async function logout() {
         await axios.post('/logout')
@@ -39,8 +38,9 @@ const Header = () => {
                     <li className='py-4 text-2xl'>ABOUT</li>
                     <li className='py-4 text-2xl'>SKILLS</li>
                     <li className='py-4 text-2xl'>PROJECTS</li>
-                    <li className='py-4 text-2xl'><button className='border font-thin rounded-full px-3 bg-slate-600 text-white'>
-                        SIGN IN</button></li>
+                    {!user ? (<Link to={'/login'} className=''><button className='border font-thin rounded-lg px-3 py-2.5 bg-slate-700 text-white'>
+                        SIGN IN</button></Link>) : (<Link to={'/'} className=''><button onClick={logout} className='border font-thin rounded-lg px-3 py-2.5 bg-slate-700 text-white'>
+                            LOGOUT</button></Link>)}
                 </ul>
 
 
