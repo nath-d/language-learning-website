@@ -41,6 +41,12 @@ const LoginPage = () => {
     return (
         <div className="mt-4 grow flex items-center justify-around min-h-screen">
             <div className="mb-72">
+                <Link to={'/'}>
+                    <h1 className='flex flex-col justify-start items-center font-semibold font-mont text-3xl mb-24'>
+                        ランゲージラボ
+                        <h2 className='text-sm text-slate-600'>LANGUAGE LAB</h2></h1>
+                </Link>
+
                 <h1 className="text-2xl text-center mb-4 font-nunito font-semibold">Login</h1>
                 <form className="max-w-md mx-auto" onSubmit={LoginUser}>
                     <input type="email"

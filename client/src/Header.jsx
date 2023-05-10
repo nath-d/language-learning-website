@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { UserContext } from './UserContext';
 import axios from 'axios';
 
+
 const Header = () => {
     const [nav, setNav] = useState(false)
     const handleClick = () => setNav(!nav)
@@ -15,13 +16,19 @@ const Header = () => {
     }
     return (
         <header>
-            <div className='h-[70px] w-[100%] pt-2'>
+            <div className='h-[70px] w-[100%] pt-2 flex'>
                 <div onClick={handleClick} className='md:hidden z-10 fixed right-[20px] top-[20px] text-[20px]'>
                     <BiMenu />
                 </div>
+                <Link to={'/'} className=''>
+                    <h1 className='h-[70px] flex flex-col justify-start items-center p-4 pl-6 font-semibold font-mont text-3xl'>
+                        ランゲージラボ
+                        <h2 className='text-sm font-regular text-slate-600'>LANGUAGE LAB</h2></h1>
+                </Link>
 
-                <ul className='hidden font-nunito fixed w-[100%] h-[70px] right-[30px] md:flex justify-end items-center gap-8'>
-                    <li className=''>HOME</li>
+
+                <ul className='hidden font-nunito fixed w-[70%] h-[70px] right-[30px] md:flex justify-end items-center gap-8'>
+                    <Link to={'/'}><li className=''>HOME</li></Link>
                     <li className=''>ABOUT</li>
                     <li className=''>SKILLS</li>
                     <li className=''>PROJECTS</li>
