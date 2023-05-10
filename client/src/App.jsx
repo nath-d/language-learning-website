@@ -7,6 +7,7 @@ import axios from 'axios';
 import PageNotFound from './pages/PageNotFound';
 import { UserContextProvider } from './UserContext';
 
+
 axios.defaults.baseURL = 'http://localhost:7001';
 axios.defaults.withCredentials = true
 

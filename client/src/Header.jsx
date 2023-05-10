@@ -2,13 +2,18 @@ import { useContext, useState } from 'react'
 import { BiMenu } from "react-icons/bi";
 import { Link } from 'react-router-dom';
 import { UserContext } from './UserContext';
+import axios from 'axios';
 
 const Header = () => {
     const [nav, setNav] = useState(false)
     const handleClick = () => setNav(!nav)
-    const { user } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
+    // const [toHome, setToHome] = useState(null)
 
-
+    async function logout() {
+        await axios.post('/logout')
+        setUser(null)
+    }
     return (
         <header>
             <div className='h-[70px] w-[100%] pt-2'>
@@ -21,8 +26,11 @@ const Header = () => {
                     <li className=''>ABOUT</li>
                     <li className=''>SKILLS</li>
                     <li className=''>PROJECTS</li>
-                    <Link to={'/login'} className=''><button className='border font-thin rounded-lg px-3 py-2.5 bg-slate-700 text-white'>
-                        ACCOUNT</button></Link>
+                    {!user ? (<Link to={'/login'} className=''><button className='border font-thin rounded-lg px-3 py-2.5 bg-slate-700 text-white'>
+                        SIGN IN</button></Link>) : (<Link to={'/'} className=''><button onClick={logout} className='border font-thin rounded-lg px-3 py-2.5 bg-slate-700 text-white'>
+                            LOGOUT</button></Link>)}
+                    {/* <Link to={'/login'} className=''><button className='border font-thin rounded-lg px-3 py-2.5 bg-slate-700 text-white'>
+                        SIGN IN</button></Link> */}
                 </ul>
 
 
@@ -32,7 +40,7 @@ const Header = () => {
                     <li className='py-4 text-2xl'>SKILLS</li>
                     <li className='py-4 text-2xl'>PROJECTS</li>
                     <li className='py-4 text-2xl'><button className='border font-thin rounded-full px-3 bg-slate-600 text-white'>
-                        ACCOUNT</button></li>
+                        SIGN IN</button></li>
                 </ul>
 
 

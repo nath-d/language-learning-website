@@ -3,6 +3,9 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 
+
+
+
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = 'jklhfg34jh1234vjk23h4v2j3hk4v24'
 
@@ -59,5 +62,7 @@ const TokenHandler = (req, res) => {
     }
     res.json(null)
 }
+
+
 
 module.exports = { UserRegister, UserLogin, TokenHandler }
