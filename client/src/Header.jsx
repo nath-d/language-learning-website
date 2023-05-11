@@ -27,13 +27,13 @@ const Header = () => {
                 </Link>
 
 
-                <ul className='hidden font-nunito fixed w-[70%] h-[70px] right-[30px] md:flex justify-end items-center gap-8'>
+                <ul className='hidden font-nunito fixed w-[70%] h-[70px] right-[30px] md:flex justify-end items-center gap-10'>
                     <Link to={'/'}><li className=''>HOME</li></Link>
-                    <li className=''>ABOUT</li>
+                    <Link to={'/language'}><li className=''>LANGUAGES</li></Link>
                     <li className=''>SKILLS</li>
                     <li className=''>PROJECTS</li>
-                    {!user ? (<Link to={'/login'} className=''><button className='border font-thin rounded-lg px-3 py-2.5 bg-slate-700 text-white'>
-                        SIGN IN</button></Link>) : (<Link to={'/'} className=''><button onClick={logout} className='border font-thin rounded-lg px-3 py-2.5 bg-slate-700 text-white'>
+                    {!user ? (<Link to={'/login'} className=''><button className='border font-thin rounded-full px-4 py-1 bg-slate-700 text-white'>
+                        SIGN IN</button></Link>) : (<Link to={'/'} className=''><button onClick={logout} className='border font-thin rounded-full px-4 py-1 bg-slate-700 text-white'>
                             LOGOUT</button></Link>)}
                 </ul>
 
@@ -43,8 +43,8 @@ const Header = () => {
                     <li className='py-4 text-2xl'>ABOUT</li>
                     <li className='py-4 text-2xl'>SKILLS</li>
                     <li className='py-4 text-2xl'>PROJECTS</li>
-                    {!user ? (<Link to={'/login'} className=''><button className='border font-thin rounded-lg px-3 py-2.5 bg-slate-700 text-white'>
-                        SIGN IN</button></Link>) : (<Link to={'/'} className=''><button onClick={logout} className='border font-thin rounded-lg px-3 py-2.5 bg-slate-700 text-white'>
+                    {!user ? (<Link to={'/login'} className=''><button className='border font-thin rounded-full px-4 py-1 bg-slate-700 text-white'>
+                        SIGN IN</button></Link>) : (<Link to={'/'} className=''><button onClick={logout} className='border font-thin rounded-full px-4 py-1 bg-slate-700 text-white'>
                             LOGOUT</button></Link>)}
                 </ul>
 

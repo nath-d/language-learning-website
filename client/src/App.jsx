@@ -6,6 +6,7 @@ import SignUpPage from './pages/SignUpPage';
 import axios from 'axios';
 import PageNotFound from './pages/PageNotFound';
 import { UserContextProvider } from './UserContext';
+import { Languages } from './pages/Languages';
 
 
 axios.defaults.baseURL = 'http://localhost:7001';
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Layout />} ></Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signUp" element={<SignUpPage />} />
+        <Route path="/language" element={<Languages />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </UserContextProvider>
