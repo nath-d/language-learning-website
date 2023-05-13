@@ -5,7 +5,7 @@ const { UserRegister, UserLogin, TokenHandler } = require('./controllers/UserCon
 require('dotenv').config()
 const cookieParser = require('cookie-parser');
 const { JsonWebTokenError } = require('jsonwebtoken');
-const { LanguageRegister } = require('./controllers/LanguageController');
+const { LanguageRegister, GetAllLanguages } = require('./controllers/LanguageController');
 
 //xDmFk9jgrJfJv9p9
 
@@ -30,9 +30,8 @@ app.post('/logout', (req, res) => {
     res.cookie('token', '').json(true);
 })
 app.get('/profile', TokenHandler)
+app.get('/allLanguage', GetAllLanguages)
 app.post('/language', LanguageRegister)
-
-
 
 
 app.listen(7001, () => {

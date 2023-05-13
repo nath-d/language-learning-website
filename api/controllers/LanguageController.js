@@ -13,4 +13,13 @@ const LanguageRegister = async (req, res) => {
     }
 }
 
-module.exports = { LanguageRegister }
+const GetAllLanguages = async (req, res) => {
+    try {
+        const lang = await Language.find();
+        res.send(lang);
+    } catch (err) {
+        res.status(422).json(err)
+    }
+}
+
+module.exports = { LanguageRegister, GetAllLanguages }

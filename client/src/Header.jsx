@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react'
 import { BiMenu } from "react-icons/bi";
+import { CiUser } from "react-icons/ci";
 import { Link } from 'react-router-dom';
 import { UserContext } from './UserContext';
 import axios from 'axios';
@@ -9,6 +10,27 @@ const Header = () => {
     const [nav, setNav] = useState(false)
     const handleClick = () => setNav(!nav)
     const { user, setUser } = useContext(UserContext)
+    const [lang, setLang] = useState([])
+
+
+    axios.get('/allLanguage').then(
+        (response) => {
+            setLang(response.data)
+        }
+    )
+    const userId = user._id;
+    const serviceId = lang._id;
+
+    const subscribeService = (userId, serviceId) => {
+        axios.post('/subscribe', { userId, serviceId }).
+            then(languageResponse => {
+                console.log('subbed')
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
 
     async function logout() {
         await axios.post('/logout')
@@ -27,14 +49,14 @@ const Header = () => {
                 </Link>
 
 
-                <ul className='hidden font-nunito fixed w-[70%] h-[70px] right-[30px] md:flex justify-end items-center gap-10'>
+                <ul className='hidden font-nunito fixed w-[70%] h-[70px] right-[30px] md:flex justify-end items-center gap-8'>
                     <Link to={'/'}><li className=''>HOME</li></Link>
                     <Link to={'/language'}><li className=''>LANGUAGES</li></Link>
                     <li className=''>SKILLS</li>
                     <li className=''>PROJECTS</li>
                     {!user ? (<Link to={'/login'} className=''><button className='border font-thin rounded-full px-4 py-1 bg-slate-700 text-white'>
-                        SIGN IN</button></Link>) : (<Link to={'/'} className=''><button onClick={logout} className='border font-thin rounded-full px-4 py-1 bg-slate-700 text-white'>
-                            LOGOUT</button></Link>)}
+                        SIGN IN</button></Link>) : (<Link to={'/account'} className=''><button className='border flex gap-2 font-thin rounded-full px-4 py-1 bg-slate-700 text-white'>
+                            <CiUser className='text-2xl' />ACCOUNT</button></Link>)}
                 </ul>
 
 
@@ -50,9 +72,16 @@ const Header = () => {
 
 
             </div>
-            {!!user && (
-                <div className='pt-2 font-nunito text-lg fixed w-[100%] right-[30px] md:flex justify-end items-center'>Logged in as {user.name}</div>
-            )}
+            {
+                lang.map((data) => {
+                    return (
+                        <h1 key={data._id}>{data.name}</h1>
+                    )
+                })
+            }
+            {/* {!!user && (
+                <div className='pt-2 font-nunito text-lg fixed w-[100%] right-[30px] md:flex justify-end items-center gap-2'><FaRegUserCircle className='text-2xl' />Account</div>
+            )} */}
         </header>
     )
 }
