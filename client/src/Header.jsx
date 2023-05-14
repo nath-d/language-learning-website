@@ -18,18 +18,18 @@ const Header = () => {
             setLang(response.data)
         }
     )
-    const userId = user._id;
-    const serviceId = lang._id;
+    // const userId = user._id;
+    // const serviceId = lang._id;
 
-    const subscribeService = (userId, serviceId) => {
-        axios.post('/subscribe', { userId, serviceId }).
-            then(languageResponse => {
-                console.log('subbed')
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }
+    // const subscribeService = (userId, serviceId) => {
+    //     axios.post('/subscribe', { userId, serviceId }).
+    //         then(languageResponse => {
+    //             console.log('subbed')
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //         })
+    // }
 
 
     async function logout() {
@@ -38,12 +38,12 @@ const Header = () => {
     }
     return (
         <header>
-            <div className='h-[70px] w-[100%] pt-2 flex'>
+            <div className='h-[100px] w-[100%] pt-2 flex bg-white fixed z-10'>
                 <div onClick={handleClick} className='md:hidden z-10 fixed right-[20px] top-[20px] text-[20px]'>
                     <BiMenu />
                 </div>
                 <Link to={'/'} className=''>
-                    <h1 className='h-[70px] flex flex-col justify-start items-center p-4 pl-6 font-semibold font-mont text-3xl'>
+                    <h1 className='fixed h-[70px] flex flex-col justify-start items-center p-4 pl-6 font-semibold font-mont text-3xl'>
                         ランゲージラボ
                         <h2 className='text-sm font-regular text-slate-600'>LANGUAGE LAB</h2></h1>
                 </Link>
@@ -72,13 +72,13 @@ const Header = () => {
 
 
             </div>
-            {
+            {/* {
                 lang.map((data) => {
                     return (
                         <h1 key={data._id}>{data.name}</h1>
                     )
                 })
-            }
+            } */}
             {/* {!!user && (
                 <div className='pt-2 font-nunito text-lg fixed w-[100%] right-[30px] md:flex justify-end items-center gap-2'><FaRegUserCircle className='text-2xl' />Account</div>
             )} */}
