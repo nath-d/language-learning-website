@@ -13,11 +13,11 @@ const Header = () => {
     const [lang, setLang] = useState([])
 
 
-    axios.get('/allLanguage').then(
-        (response) => {
-            setLang(response.data)
-        }
-    )
+    // axios.get('/allLanguage').then(
+    //     (response) => {
+    //         setLang(response.data)
+    //     }
+    // )
     // const userId = user._id;
     // const serviceId = lang._id;
 
